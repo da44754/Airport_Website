@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+body{
+  margin-left: 10px;
+}
+  </style>
+  <title>
+    INTO PRODUCTION
+  </title>
+</head>
+
+<body>
+  <form action="{{ url_for('predict')}}" method="post">
+    <label for="month">Input day of month:</label><br><br>
+    <input type="number" name="month" min=1 max=31 required><br><br><br>
+
+    <label for="week">Input day of week:</label><br><br>
+    <input type="number"name="week" min=1 max=7 required><br><br><br>
+
+
+    <label for="Airport">Choose Airport code</label>
+    <select name="Airport-code"name="Airport" id="Airport_code" required>
+    </select>
+    <br><br><br><br>
+    <label for="ORIGIN">Choose origin</label>
+    <select name="origin-code" id="origin" required>
+    </select>
+    <br><br><br><br>
+    <label for="Dest">Choose destination</label>
+    <select name="dest-code" id="dest" required>
+    </select>
+    <br><br><br><br>
+    <label for="dtime">Input departure time:</label><br><br>
+    <input type="decimal" name="dtime" min=0 required><br><br><br><br>
+
+    <label for="btime">Choose departure time block</label>
+    <select name="btime-code" id="btime" required>
+    </select>
+    <br><br><br><br>
+    <label for="atime">Input arrival time:</label><br><br>
+    <input name="atime" type="decimal" min=0 required><br><br><br><br>
+
+    <label for="distance">Input distnace:</label><br><br>
+    <input name="distance" type="decimal" min=0 required><br><br><br><br>
+
+    <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+  <br><br> 
+     {{prediction_text}}
+  <script>
+    function refaay(id, lst) {
+      let select = document.getElementById(id)
+      for (let i = 0; i < lst.length; i++) {
+        let op = document.createElement("option")
+        op.setAttribute("value",`${i}`)
+        op.innerText = lst[i]
+        select.appendChild(op)
+      }
+    }
+    refaay("Airport_code", ['EV', 'AS', '9E', 'OO', 'MQ', 'HA', 'YV', 'NK', 'WN', 'UA', 'YX', 'G4', 'DL', 'AA', 'B6', 'F9', 'OH'])
+    refaay("origin", ['HOU', 'OGG', 'SIT', 'TRI', 'PSP', 'KTN', 'BDL', 'BQN', 'PGD', 'SHD', 'RAP', 'TUS', 'BOI', 'ILM', 'VPS', 'CMX', 'AGS', 'FAT', 'OME', 'CLL', 'FLG', 'PBG', 'ABI', 'LAN', 'DSM', 'GPT', 'LWS', 'SAT', 'BIS', 'VLD', 'MOB', 'EAU', 'PIH', 'DTW', 'HRL', 'BRD', 'IAG', 'ALB', 'HOB', 'BFF', 'AVL', 'TOL', 'PWM', 'MDT', 'SJU', 'LAX', 'GFK', 'PUB', 'PAH', 'SAV', 'CVG', 'SJC', 'OGD', 'MDW', 'ERI', 'GRR', 'PSC', 'FNT', 'BTV', 'BRO', 'IMT', 'JLN', 'LCK', 'SFO', 'GNV', 'MSO', 'PSE', 'DRO', 'CDV', 'OTZ', 'AMA', 'JAN', 'BET', 'CIU', 'GSO', 'BNA', 'ITO', 'FLL', 'SGU', 'CMI', 'BJI', 'PDX', 'DAY', 'AEX', 'IAH', 'FCA', 'MGM', 'MMH', 'COS', 'RDD', 'XNA', 'HIB', 'DLH', 'CWA', 'JNU', 'LBE', 'STL', 'SHV', 'TTN', 'LGA', 'CLE', 'STX', 'PSM', 'RST', 'ATL', 'JAX', 'APN', 'BWI', 'BLI', 'BFL', 'GTF', 'MLI', 'BPT', 'PHF', 'STS', 'PIT', 'OAJ', 'DRT', 'TUL', 'LAS', 'RDM', 'ROW', 'USA', 'YAK', 'SFB', 'GRK', 'BQK', 'FAR', 'SEA', 'EUG', 'CHS', 'OMA', 'EKO', 'HHH', 'HSV', 'ART', 'MHK', 'PBI', 'YUM', 'LAW', 'ASE', 'PHX', 'PIA', 'OGS', 'DFW', 'OAK', 'ATW', 'OKC', 'GGG', 'LCH', 'AZA', 'RHI', 'GEG', 'IND', 'TWF', 'BOS', 'DCA', 'BMI', 'SYR', 'BRW', 'TYS', 'STT', 'ROA', 'MCI', 'FWA', 'RDU', 'SCC', 'PHL', 'MEI', 'LNK', 'ESC', 'LBB', 'CID', 'PRC', 'CYS', 'MQT', 'FSM', 'OTH', 'TLH', 'LBL', 'CDC', 'BHM', 'BGM', 'FSD', 'COD', 'INL', 'SPN', 'FAY', 'MIA', 'ORD', 'ELM', 'MFR', 'CMH', 'RNO', 'SPS', 'BUR', 'CKB', 'ABQ', 'ISP', 'RIC', 'SWF', 'SUN', 'ADQ', 'KOA', 'ORF', 'ROC', 'MEM', 'SNA', 'HVN', 'LRD', 'TVC', 'CGI', 'ABR', 'HLN', 'SLN', 'RFD', 'VEL', 'MAF', 'ALO', 'HPN', 'GUC', 'SBN', 'DAL', 'UIN', 'BTR', 'AZO', 'AVP', 'WRG', 'CRW', 'MYR', 'SAN', 'EGE', 'SAF', 'ISN', 'DEN', 'ACV', 'BTM', 'IAD', 'PIB', 'PLN', 'SJT', 'MSY', 'MKE', 'IDA', 'PVD', 'SCK', 'ACY', 'LWB', 'GCK', 'PSG', 'CSG', 'MHT', 'SMX', 'PPG', 'SLC', 'MLU', 'HTS', 'BUF', 'ORH', 'SUX', 'GTR', 'PNS', 'TXK', 'HGR', 'GRI', 'LEX', 'ECP', 'MLB', 'LBF', 'CRP', 'SBA', 'ELP', 'SMF', 'GSP', 'STC', 'MRY', 'OWB', 'ANC', 'MSN', 'CPR', 'MTJ', 'COU', 'GCC', 'BIL', 'ICT', 'CLT', 'GUM', 'HNL', 'SWO', 'ITH', 'EAR', 'EYW', 'MFE', 'LYH', 'HYS', 'SBP', 'JFK', 'MKG', 'MSP', 'BLV', 'ONT', 'LSE', 'LAR', 'HDN', 'EWR', 'ACT', 'SCE', 'TYR', 'RKS', 'SPI', 'GRB', 'LGB', 'AUS', 'PIE', 'MBS', 'CNY', 'EWN', 'ADK', 'FAI', 'MCO', 'LIH', 'CAK', 'SDF', 'SRQ', 'DHN', 'GJT', 'CHO', 'LFT', 'JMS', 'CAE', 'BZN', 'MOT', 'JAC', 'DAB', 'PVU', 'SGF', 'DVL', 'TPA', 'EVV', 'ABE', 'LIT', 'RSW', 'DBQ', 'BGR', 'CHA', 'ABY'])
+    refaay("dest", ['HOU', 'OGG', 'SIT', 'TRI', 'PSP', 'KTN', 'BDL', 'BQN', 'PGD', 'SHD', 'TUS', 'RAP', 'BOI', 'ILM', 'VPS', 'CMX', 'AGS', 'FAT', 'OME', 'CLL', 'FLG', 'PBG', 'ABI', 'LAN', 'DSM', 'GPT', 'LWS', 'SAT', 'BIS', 'VLD', 'MOB', 'EAU', 'PIH', 'DTW', 'HRL', 'BRD', 'IAG', 'ALB', 'HOB', 'BFF', 'AVL', 'TOL', 'PWM', 'MDT', 'SJU', 'LAX', 'GFK', 'PUB', 'PAH', 'SAV', 'CVG', 'SJC', 'OGD', 'MDW', 'ERI', 'GRR', 'PSC', 'FNT', 'BTV', 'BRO', 'IMT', 'JLN', 'LCK', 'SFO', 'GNV', 'MSO', 'PSE', 'DRO', 'CDV', 'OTZ', 'AMA', 'JAN', 'BET', 'CIU', 'GSO', 'BNA', 'ITO', 'FLL', 'SGU', 'CMI', 'BJI', 'PDX', 'DAY', 'AEX', 'IAH', 'FCA', 'MGM', 'MMH', 'COS', 'RDD', 'XNA', 'HIB', 'DLH', 'CWA', 'JNU', 'LBE', 'STL', 'SHV', 'TTN', 'LGA', 'CLE', 'STX', 'PSM', 'RST', 'ATL', 'JAX', 'APN', 'BWI', 'BLI', 'GTF', 'BFL', 'MLI', 'BPT', 'PHF', 'STS', 'OAJ', 'PIT', 'DRT', 'TUL', 'LAS', 'RDM', 'ROW', 'USA', 'YAK', 'SFB', 'GRK', 'BQK', 'FAR', 'SEA', 'EUG', 'CHS', 'OMA', 'EKO', 'HHH', 'HSV', 'ART', 'MHK', 'PBI', 'YUM', 'LAW', 'ASE', 'PHX', 'PIA', 'OGS', 'DFW', 'OAK', 'ATW', 'LCH', 'OKC', 'GGG', 'AZA', 'RHI', 'GEG', 'IND', 'TWF', 'BOS', 'DCA', 'BMI', 'SYR', 'BRW', 'TYS', 'STT', 'ROA', 'MCI', 'FWA', 'RDU', 'SCC', 'PHL', 'MEI', 'LNK', 'ESC', 'LBB', 'CID', 'PRC', 'CYS', 'MQT', 'FSM', 'OTH', 'TLH', 'LBL', 'CDC', 'BHM', 'BGM', 'FSD', 'COD', 'INL', 'SPN', 'FAY', 'MIA', 'ORD', 'ELM', 'MFR', 'CMH', 'RNO', 'SPS', 'BUR', 'CKB', 'ABQ', 'ISP', 'RIC', 'SWF', 'SUN', 'ADQ', 'KOA', 'ROC', 'ORF', 'MEM', 'SNA', 'HVN', 'LRD', 'TVC', 'CGI', 'ABR', 'HLN', 'SLN', 'RFD', 'VEL', 'MAF', 'ALO', 'HPN', 'GUC', 'SBN', 'DAL', 'UIN', 'BTR', 'AZO', 'AVP', 'WRG', 'MYR', 'CRW', 'SAN', 'EGE', 'SAF', 'ISN', 'DEN', 'ACV', 'BTM', 'IAD', 'PIB', 'PLN', 'SJT', 'MSY', 'MKE', 'IDA', 'PVD', 'SCK', 'ACY', 'LWB', 'GCK', 'PSG', 'CSG', 'MHT', 'SMX', 'PPG', 'SLC', 'MLU', 'HTS', 'BUF', 'ORH', 'SUX', 'GTR', 'PNS', 'TXK', 'HGR', 'GRI', 'LEX', 'ECP', 'MLB', 'LBF', 'CRP', 'SBA', 'ELP', 'GSP', 'SMF', 'STC', 'MRY', 'OWB', 'ANC', 'MSN', 'CPR', 'MTJ', 'COU', 'GCC', 'BIL', 'ICT', 'CLT', 'GUM', 'HNL', 'ITH', 'SWO', 'EAR', 'EYW', 'MFE', 'LYH', 'HYS', 'SBP', 'JFK', 'MKG', 'MSP', 'BLV', 'ONT', 'LSE', 'LAR', 'HDN', 'EWR', 'ACT', 'SCE', 'TYR', 'RKS', 'SPI', 'GRB', 'LGB', 'AUS', 'PIE', 'MBS', 'CNY', 'EWN', 'ADK', 'FAI', 'MCO', 'LIH', 'CAK', 'SDF', 'SRQ', 'DHN', 'GJT', 'CHO', 'LFT', 'JMS', 'CAE', 'BZN', 'MOT', 'JAC', 'PVU', 'DAB', 'SGF', 'DVL', 'TPA', 'EVV', 'ABE', 'LIT', 'RSW', 'DBQ', 'BGR', 'CHA', 'ABY'])
+    refaay("btime", ['0700-0759', '0001-0559', '2000-2059', '0600-0659', '1300-1359', '1500-1559', '0900-0959', '1700-1759', '2300-2359', '1000-1059', '1100-1159', '2100-2159', '0800-0859', '2200-2259', '1200-1259', '1400-1459', '1800-1859', '1600-1659', '1900-1959'])
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>
+    Airport
+  </title>
+  <style>
+    label {
+      font-size: 15px;
+      color: rgb(125, 150, 171);
+      font-weight: bold;
+      margin-right: 10px;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 940px;
+      padding: 0 10px;
+    }
+
+    .footer {
+      background-color: #6aa1b2;
+      color: #fff;
+      padding: 30px 0;
+    }
+
+    .footer p {
+      font-family: 'Raleway', sans-serif;
+      text-transform: uppercase;
+      font-size: 15px;
+    }
+
+    input {
+      width: 200px;
+      height: 20px;
+      padding: 5px;
+      border-radius: 5px;
+      background-color: var(--darkgray);
+    }
+
+    select {
+      width: 200px;
+      border-radius: 5px;
+    }
+
+    option {
+      font-size: 15px;
+    }
+
+    option:hover {
+      color: rgb(161, 228, 228);
+    }
+
+    img {
+      position: absolute;
+      left: 0;
+      top: 15%;
+    }
+
+    #submit {
+      width: 200px;
+      height: 50px;
+      padding: 5px;
+      color: black;
+      font-size: 15px;
+      font-weight: bold;
+      background-color: rgb(54, 139, 209);
+      cursor: pointer;
+      margin-left: 90%;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      -webkit-font-smoothing: antialiased;
+      -moz-font-smoothing: antialiased;
+      -o-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    body {
+      font-family: "Roboto", Helvetica, Arial, sans-serif;
+      font-weight: 100;
+      font-size: 12px;
+      color: #777;
+    }
+    .container {
+      max-width: 400px;
+      width: 100%;
+      margin: 0 10%;
+      position: relative;
+    }
+    #contact input[type="text"],
+    #contact input[type="email"],
+    #contact input[type="tel"],
+    #contact input[type="url"],
+    #contact textarea,
+    #contact button[type="submit"] {
+    font: 400 12px/16px "Roboto", Helvetica, Arial, sans-serif;
+    }
+
+    #contact {
+      background: #F9F9F9;
+      padding: 25px;
+      box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    }
+    #contact h3 {
+      display: block;
+      font-size: 30px;
+      font-weight: 300;
+      margin-bottom: 10px;
+    }
+    #contact h4 {
+      margin: 5px 0 15px;
+      display: block;
+      font-size: 13px;
+      font-weight: 400;
+    }
+    fieldset {
+      border: medium none !important;
+      margin: 0 0 10px;
+      min-width: 100%;
+      padding: 0;
+      width: 100%;
+    }
+    #contact input[type="text"],
+    #contact input[type="email"],
+    #contact input[type="tel"],
+    #contact input[type="url"],
+    #contact input[type="number"],
+    #contact input[type="decimal"],
+    #contact select,
+    #contact textarea {
+      width: 100%;
+      border: 1px solid #ccc;
+      background: #FFF;
+      margin: 0 0 5px;
+      padding: 20px;
+
+    }
+    #contact input[type="text"]:hover,
+    #contact input[type="email"]:hover,
+    #contact input[type="tel"]:hover,
+    #contact input[type="url"]:hover,
+    #contact input[type="number"],
+    #contact input[type="deciaml"],
+    #contact select,
+    #contact textarea:hover {
+      -webkit-transition: border-color 0.3s ease-in-out;
+      -moz-transition: border-color 0.3s ease-in-out;
+      transition: border-color 0.3s ease-in-out;
+      border: 1px solid #aaa;
+    }
+    #contact textarea {
+      height: 100px;
+      max-width: 100%;
+      resize: none;
+    }
+    #contact button[type="submit"] {
+      cursor: pointer;
+      width: 100%;
+      border: none;
+      background: gray;
+      color: #FFF;
+      margin: 0 0 5px;
+      padding: 10px;
+      font-size: 15px;
+    }
+    #contact button[type="submit"]:hover {
+      background: #6aa1b2;
+      -webkit-transition: 0.3s ease-in-out;
+      -moz-transition: 0.3s ease-in-out;
+      transition: background-color 0.3s ease-in-out;
+    }
+    #contact button[type="submit"]:active {
+      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+    }
+    .copyright {
+      text-align: center;
+    }
+    #contact input:focus,
+    #contact textarea:focus {
+      outline: 0;
+      border: 1px solid #aaa;
+    }
+    ::-webkit-input-placeholder {
+      color: #888;
+    }
+    :-moz-placeholder {
+      color: #888;
+    }
+    ::-moz-placeholder {
+      color: #888;
+    }
+  </style>
+</head>
+<body style='background-image: url({{url_for'static',filename='plane3.jpg'}})>
+  <header style="background-color: #6aa1b2;display: flex; padding: 20px 0;">
+    <div style="margin-left:20px;color:white;position: relative;">
+      <img src=".images/plane.png" style="width: 100px;" />
+      <p style="margin-left: 100px; font-size: 30px;font-family: 'Raleway', sans-serif;
+      text-transform: uppercase;">AirPort</p>
+    </div>
+  </header>
+  <div class="container">
+    <form id="contact" action="{{ url_for('predict')}}" method="post">
+      <h3>AirPort Form</h3>
+      <h4>Contact us for custom quote</h4>
+      <fieldset>
+        <label for="month"> Day of month</label>
+        <input type="number" placeholder="Enter..." min=1 max=31 name="month" required="required" /><br><br>
+      </fieldset>
+      <fieldset>
+        <label for="week"> Day of week</label>
+        <input type="number" placeholder="Enter..." min=1 max=7 name="week" required="required" /><br><br>
+      </fieldset>
+      <fieldset>
+        <label for="Airport"> Airport code</label>
+        <select name="Airport" id="Airport_code" required="required"><br><br>
+        </select>
+      </fieldset>
+      <fieldset>
+        <label for="ORIGIN"> Origin</label>
+        <select name="ORIGIN" id="origin" required="required"><br><br>
+        </select>
+      </fieldset>
+      <fieldset>
+        <label for="Dest"> Destination</label>
+        <select name="dest_code" id="dest" required><br><br>
+        </select>
+
+      </fieldset>
+
+      <fieldset>
+        <label for="dtime">Departure time</label>
+        <input type="decimal" placeholder="Enter..." name="departure time" min=0 required="required"/><br><br>
+      </fieldset>
+
+      <fieldset>
+        <label for="btime">Dep time block</label>
+        <select name="btime_code" id="btime" required="required"><br><br></select>
+
+      </fieldset>
+      <fieldset>
+        <label for="atime">Arrival time</label>
+        <input type="decimal" placeholder="Enter..." name="arrival" min=0 required="required" /><br><br>
+
+      </fieldset>
+      <fieldset>
+        <label for="distance"> Distance</label>
+        <input type="decimal" placeholder="Enter..." name="distance" min=0 required="required" /><br><br>
+
+      </fieldset>
+      <fieldset>
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+      </fieldset>
+    </form>
+    <h1>{{ prediction_text }}<h1>
+  </div>
+  <div class="footer">
+    <div class="container">
+      <p>&copy;AirPort 2022</p>
+    </div>
+  </div>
+  <script>
+    function refaay(id, lst) {
+      let select = document.getElementById(id)
+      for (let i = 0; i < lst.length; i++) {
+        let op = document.createElement("option")
+        op.setAttribute("value", `${i}`)
+        op.innerText = lst[i]
+        select.appendChild(op)
+    }
+  }
+    refaay("Airport_code", ['EV', 'AS', '9E', 'OO', 'MQ', 'HA', 'YV', 'NK', 'WN', 'UA', 'YX', 'G4', 'DL', 'AA', 'B6', 'F9', 'OH'])
+    refaay("origin", ['HOU', 'OGG', 'SIT', 'TRI', 'PSP', 'KTN', 'BDL', 'BQN', 'PGD', 'SHD', 'RAP', 'TUS', 'BOI', 'ILM', 'VPS', 'CMX', 'AGS', 'FAT', 'OME', 'CLL', 'FLG', 'PBG', 'ABI', 'LAN', 'DSM', 'GPT', 'LWS', 'SAT', 'BIS', 'VLD', 'MOB', 'EAU', 'PIH', 'DTW', 'HRL', 'BRD', 'IAG', 'ALB', 'HOB', 'BFF', 'AVL', 'TOL', 'PWM', 'MDT', 'SJU', 'LAX', 'GFK', 'PUB', 'PAH', 'SAV', 'CVG', 'SJC', 'OGD', 'MDW', 'ERI', 'GRR', 'PSC', 'FNT', 'BTV', 'BRO', 'IMT', 'JLN', 'LCK', 'SFO', 'GNV', 'MSO', 'PSE', 'DRO', 'CDV', 'OTZ', 'AMA', 'JAN', 'BET', 'CIU', 'GSO', 'BNA', 'ITO', 'FLL', 'SGU', 'CMI', 'BJI', 'PDX', 'DAY', 'AEX', 'IAH', 'FCA', 'MGM', 'MMH', 'COS', 'RDD', 'XNA', 'HIB', 'DLH', 'CWA', 'JNU', 'LBE', 'STL', 'SHV', 'TTN', 'LGA', 'CLE', 'STX', 'PSM', 'RST', 'ATL', 'JAX', 'APN', 'BWI', 'BLI', 'BFL', 'GTF', 'MLI', 'BPT', 'PHF', 'STS', 'PIT', 'OAJ', 'DRT', 'TUL', 'LAS', 'RDM', 'ROW', 'USA', 'YAK', 'SFB', 'GRK', 'BQK', 'FAR', 'SEA', 'EUG', 'CHS', 'OMA', 'EKO', 'HHH', 'HSV', 'ART', 'MHK', 'PBI', 'YUM', 'LAW', 'ASE', 'PHX', 'PIA', 'OGS', 'DFW', 'OAK', 'ATW', 'OKC', 'GGG', 'LCH', 'AZA', 'RHI', 'GEG', 'IND', 'TWF', 'BOS', 'DCA', 'BMI', 'SYR', 'BRW', 'TYS', 'STT', 'ROA', 'MCI', 'FWA', 'RDU', 'SCC', 'PHL', 'MEI', 'LNK', 'ESC', 'LBB', 'CID', 'PRC', 'CYS', 'MQT', 'FSM', 'OTH', 'TLH', 'LBL', 'CDC', 'BHM', 'BGM', 'FSD', 'COD', 'INL', 'SPN', 'FAY', 'MIA', 'ORD', 'ELM', 'MFR', 'CMH', 'RNO', 'SPS', 'BUR', 'CKB', 'ABQ', 'ISP', 'RIC', 'SWF', 'SUN', 'ADQ', 'KOA', 'ORF', 'ROC', 'MEM', 'SNA', 'HVN', 'LRD', 'TVC', 'CGI', 'ABR', 'HLN', 'SLN', 'RFD', 'VEL', 'MAF', 'ALO', 'HPN', 'GUC', 'SBN', 'DAL', 'UIN', 'BTR', 'AZO', 'AVP', 'WRG', 'CRW', 'MYR', 'SAN', 'EGE', 'SAF', 'ISN', 'DEN', 'ACV', 'BTM', 'IAD', 'PIB', 'PLN', 'SJT', 'MSY', 'MKE', 'IDA', 'PVD', 'SCK', 'ACY', 'LWB', 'GCK', 'PSG', 'CSG', 'MHT', 'SMX', 'PPG', 'SLC', 'MLU', 'HTS', 'BUF', 'ORH', 'SUX', 'GTR', 'PNS', 'TXK', 'HGR', 'GRI', 'LEX', 'ECP', 'MLB', 'LBF', 'CRP', 'SBA', 'ELP', 'SMF', 'GSP', 'STC', 'MRY', 'OWB', 'ANC', 'MSN', 'CPR', 'MTJ', 'COU', 'GCC', 'BIL', 'ICT', 'CLT', 'GUM', 'HNL', 'SWO', 'ITH', 'EAR', 'EYW', 'MFE', 'LYH', 'HYS', 'SBP', 'JFK', 'MKG', 'MSP', 'BLV', 'ONT', 'LSE', 'LAR', 'HDN', 'EWR', 'ACT', 'SCE', 'TYR', 'RKS', 'SPI', 'GRB', 'LGB', 'AUS', 'PIE', 'MBS', 'CNY', 'EWN', 'ADK', 'FAI', 'MCO', 'LIH', 'CAK', 'SDF', 'SRQ', 'DHN', 'GJT', 'CHO', 'LFT', 'JMS', 'CAE', 'BZN', 'MOT', 'JAC', 'DAB', 'PVU', 'SGF', 'DVL', 'TPA', 'EVV', 'ABE', 'LIT', 'RSW', 'DBQ', 'BGR', 'CHA', 'ABY'])
+    refaay("dest", ['HOU', 'OGG', 'SIT', 'TRI', 'PSP', 'KTN', 'BDL', 'BQN', 'PGD', 'SHD', 'TUS', 'RAP', 'BOI', 'ILM', 'VPS', 'CMX', 'AGS', 'FAT', 'OME', 'CLL', 'FLG', 'PBG', 'ABI', 'LAN', 'DSM', 'GPT', 'LWS', 'SAT', 'BIS', 'VLD', 'MOB', 'EAU', 'PIH', 'DTW', 'HRL', 'BRD', 'IAG', 'ALB', 'HOB', 'BFF', 'AVL', 'TOL', 'PWM', 'MDT', 'SJU', 'LAX', 'GFK', 'PUB', 'PAH', 'SAV', 'CVG', 'SJC', 'OGD', 'MDW', 'ERI', 'GRR', 'PSC', 'FNT', 'BTV', 'BRO', 'IMT', 'JLN', 'LCK', 'SFO', 'GNV', 'MSO', 'PSE', 'DRO', 'CDV', 'OTZ', 'AMA', 'JAN', 'BET', 'CIU', 'GSO', 'BNA', 'ITO', 'FLL', 'SGU', 'CMI', 'BJI', 'PDX', 'DAY', 'AEX', 'IAH', 'FCA', 'MGM', 'MMH', 'COS', 'RDD', 'XNA', 'HIB', 'DLH', 'CWA', 'JNU', 'LBE', 'STL', 'SHV', 'TTN', 'LGA', 'CLE', 'STX', 'PSM', 'RST', 'ATL', 'JAX', 'APN', 'BWI', 'BLI', 'GTF', 'BFL', 'MLI', 'BPT', 'PHF', 'STS', 'OAJ', 'PIT', 'DRT', 'TUL', 'LAS', 'RDM', 'ROW', 'USA', 'YAK', 'SFB', 'GRK', 'BQK', 'FAR', 'SEA', 'EUG', 'CHS', 'OMA', 'EKO', 'HHH', 'HSV', 'ART', 'MHK', 'PBI', 'YUM', 'LAW', 'ASE', 'PHX', 'PIA', 'OGS', 'DFW', 'OAK', 'ATW', 'LCH', 'OKC', 'GGG', 'AZA', 'RHI', 'GEG', 'IND', 'TWF', 'BOS', 'DCA', 'BMI', 'SYR', 'BRW', 'TYS', 'STT', 'ROA', 'MCI', 'FWA', 'RDU', 'SCC', 'PHL', 'MEI', 'LNK', 'ESC', 'LBB', 'CID', 'PRC', 'CYS', 'MQT', 'FSM', 'OTH', 'TLH', 'LBL', 'CDC', 'BHM', 'BGM', 'FSD', 'COD', 'INL', 'SPN', 'FAY', 'MIA', 'ORD', 'ELM', 'MFR', 'CMH', 'RNO', 'SPS', 'BUR', 'CKB', 'ABQ', 'ISP', 'RIC', 'SWF', 'SUN', 'ADQ', 'KOA', 'ROC', 'ORF', 'MEM', 'SNA', 'HVN', 'LRD', 'TVC', 'CGI', 'ABR', 'HLN', 'SLN', 'RFD', 'VEL', 'MAF', 'ALO', 'HPN', 'GUC', 'SBN', 'DAL', 'UIN', 'BTR', 'AZO', 'AVP', 'WRG', 'MYR', 'CRW', 'SAN', 'EGE', 'SAF', 'ISN', 'DEN', 'ACV', 'BTM', 'IAD', 'PIB', 'PLN', 'SJT', 'MSY', 'MKE', 'IDA', 'PVD', 'SCK', 'ACY', 'LWB', 'GCK', 'PSG', 'CSG', 'MHT', 'SMX', 'PPG', 'SLC', 'MLU', 'HTS', 'BUF', 'ORH', 'SUX', 'GTR', 'PNS', 'TXK', 'HGR', 'GRI', 'LEX', 'ECP', 'MLB', 'LBF', 'CRP', 'SBA', 'ELP', 'GSP', 'SMF', 'STC', 'MRY', 'OWB', 'ANC', 'MSN', 'CPR', 'MTJ', 'COU', 'GCC', 'BIL', 'ICT', 'CLT', 'GUM', 'HNL', 'ITH', 'SWO', 'EAR', 'EYW', 'MFE', 'LYH', 'HYS', 'SBP', 'JFK', 'MKG', 'MSP', 'BLV', 'ONT', 'LSE', 'LAR', 'HDN', 'EWR', 'ACT', 'SCE', 'TYR', 'RKS', 'SPI', 'GRB', 'LGB', 'AUS', 'PIE', 'MBS', 'CNY', 'EWN', 'ADK', 'FAI', 'MCO', 'LIH', 'CAK', 'SDF', 'SRQ', 'DHN', 'GJT', 'CHO', 'LFT', 'JMS', 'CAE', 'BZN', 'MOT', 'JAC', 'PVU', 'DAB', 'SGF', 'DVL', 'TPA', 'EVV', 'ABE', 'LIT', 'RSW', 'DBQ', 'BGR', 'CHA', 'ABY'])
+    refaay("btime", ['0700-0759', '0001-0559', '2000-2059', '0600-0659', '1300-1359', '1500-1559', '0900-0959', '1700-1759', '2300-2359', '1000-1059', '1100-1159', '2100-2159', '0800-0859', '2200-2259', '1200-1259', '1400-1459', '1800-1859', '1600-1659', '1900-1959'])
+  </script>
+</body>
+</html>
