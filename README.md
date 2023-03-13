@@ -1,7 +1,6 @@
 # Airport_Website
 This website is designed in order to determine:
-*Whether the plane that will arrive at the airport will be delayed.
-*Or will it arrive on time.
+Whether the plane that will arrive at the airport will be delayed,Or will it arrive on time.
 And this was done by:
 1- Downloading the dataset of all planes from Kaggle.
 2- Preparing this data using the libraries in Python.
